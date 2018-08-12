@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var disposable: Disposable? = null
+    private var fetcherListener: FetcherListener? = null
 
     private val wikiApiServe by lazy {
         WikiApiService.create()
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         disposable = wikiApiServe.hitCountCheck("query", "json", "search", searchString)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { fetcherListener?.beginFetching() }
+                .doFinally { fetcherListener?.doneFetching() }
                 .subscribe(
                         { result -> txt_search_result.text = "${result.query.searchinfo.totalhits} result found" },
                         { error -> Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show() }
@@ -40,5 +43,9 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         disposable?.dispose()
+    }
+
+    fun setFetcherListener(fetcherListener: FetcherListener) {
+        this.fetcherListener = fetcherListener
     }
 }

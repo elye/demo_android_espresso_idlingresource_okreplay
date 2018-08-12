@@ -1,6 +1,7 @@
 package com.elyeproj.wikisearchcount
 
 import android.support.test.espresso.Espresso
+import android.support.test.espresso.IdlingRegistry
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
@@ -20,21 +21,23 @@ import org.junit.runner.RunWith
 class InstrumentedTest {
     @get:Rule
     private val activityRule = ActivityTestRule(MainActivity::class.java, false, false)
+    private val fetchingIdlingResource = FetchingIdlingResource()
 
     @Before
     fun setup() {
         activityRule.launchActivity(null)
+        IdlingRegistry.getInstance().register(fetchingIdlingResource)
+        activityRule.activity.setFetcherListener(fetchingIdlingResource)
     }
 
     @Test
     @Throws(Exception::class)
     fun launchAndSearch() {
-        Espresso.onView(ViewMatchers.withId(R.id.edit_search)).
-                perform(ViewActions.replaceText("Trump"))
+        Espresso.onView(ViewMatchers.withId(R.id.edit_search))
+                .perform(ViewActions.replaceText("Trump"))
         Espresso.onView(ViewMatchers.withId(R.id.btn_search))
                 .perform(ViewActions.click())
-        Thread.sleep(5000)
         Espresso.onView(ViewMatchers.withId(R.id.txt_search_result))
-                .check(ViewAssertions.matches(ViewMatchers.withText("22909 result found")))
+                .check(ViewAssertions.matches(ViewMatchers.withText("22911 result found")))
     }
 }
