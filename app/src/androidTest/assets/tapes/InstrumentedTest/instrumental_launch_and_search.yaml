@@ -1,0 +1,44 @@
+!tape
+name: instrumental launch and search
+interactions:
+- recorded: 2018-08-12T08:16:37.183Z
+  request:
+    method: GET
+    uri: https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=Trump
+  response:
+    status: 200
+    headers:
+      accept-ranges: bytes
+      age: '0'
+      backend-timing: D=137475 t=1534061797603603
+      cache-control: private, must-revalidate, max-age=0
+      content-disposition: inline; filename=api-result.json
+      content-type: application/json; charset=utf-8
+      date: Sun, 12 Aug 2018 08:16:37 GMT
+      p3p: CP="This is not a P3P policy! See https://en.wikipedia.org/wiki/Special:CentralAutoLogin/P3P for more info."
+      server: mw1316.eqiad.wmnet
+      set-cookie: GeoIP=AU:VIC:Melbourne:-37.81:144.95:v4; Path=/; secure; Domain=.wikipedia.org
+      strict-transport-security: max-age=106384710; includeSubDomains; preload
+      vary: Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-analytics: ns=-1;special=Badtitle;https=1;nocookies=1
+      x-cache: cp1089 pass, cp2001 pass, cp5009 pass, cp5012 pass
+      x-cache-status: pass
+      x-client-ip: 203.63.10.91
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-powered-by: HHVM/3.18.6-dev
+      x-varnish: 841299519, 237178318, 425874354, 471132405
+    body: '{"batchcomplete":"","continue":{"sroffset":10,"continue":"-||"},"query":{"searchinfo":{"totalhits":22908},"search":[{"ns":0,"title":"Trump","pageid":253639,"size":3762,"wordcount":416,"snippet":"<span class=\"searchmatch\">Trump</span> most commonly
+      refers to: Donald <span class=\"searchmatch\">Trump</span> (born 1946), 45th President of the United States, businessman, and television personality <span class=\"searchmatch\">Trump</span> (card games)","timestamp":"2018-07-28T12:10:01Z"},{"ns":0,"title":"Donald
+      Trump","pageid":4848272,"size":346727,"wordcount":30347,"snippet":"Donald John <span class=\"searchmatch\">Trump</span> (born June 14, 1946) is the 45th and current President of the United States. Before entering politics, he was a businessman and television","timestamp":"2018-08-11T21:15:15Z"},{"ns":0,"title":"Melania
+      Trump","pageid":1209075,"size":56586,"wordcount":5019,"snippet":"Melania <span class=\"searchmatch\">Trump</span> (/m\u0259\u02c8l\u0251\u02d0ni\u0259/; born Melanija Knavs; [m\u025b\u02c8la\u02d0nija \u02c8kna\u02d0u\u032fs], Germanized to Melania Knauss;
+      born April 26, 1970) is a Slovenian-American former","timestamp":"2018-08-11T00:48:18Z"},{"ns":0,"title":"Fred Trump","pageid":1203316,"size":34934,"wordcount":3543,"snippet":"Christ <span class=\"searchmatch\">Trump</span> Sr. (October 11, 1905 \u2013
+      June 25, 1999) was an American real estate developer, primarily in New York City, and father of Donald <span class=\"searchmatch\">Trump</span>, the 45th","timestamp":"2018-08-11T21:10:29Z"},{"ns":0,"title":"Tiffany Trump","pageid":4339721,"size":13547,"wordcount":1010,"snippet":"Tiffany
+      Ariana <span class=\"searchmatch\">Trump</span> (born October 13, 1993) is an American socialite, Georgetown Law student in Washington, D.C. and the daughter of Donald <span class=\"searchmatch\">Trump</span> and Marla","timestamp":"2018-08-11T16:41:00Z"},{"ns":0,"title":"Ivanka
+      Trump","pageid":1861441,"size":87698,"wordcount":6816,"snippet":"Ivana Marie &quot;Ivanka&quot; <span class=\"searchmatch\">Trump</span>  (/\u026a\u02c8v\u0251\u02d0\u014bk\u0259/; born October 30, 1981) is an American businesswoman, fashion designer,
+      author and reality television personality","timestamp":"2018-08-12T01:27:16Z"},{"ns":0,"title":"Ivana Trump","pageid":1057887,"size":20246,"wordcount":1889,"snippet":"divorced in 1992. They have three children together, Donald <span class=\"searchmatch\">Trump</span>
+      Jr., Ivanka <span class=\"searchmatch\">Trump</span>, and Eric <span class=\"searchmatch\">Trump</span>.    Ivana Zeln\u00ed\u010dkov\u00e1 was born on February 20, 1949 in the","timestamp":"2018-08-06T14:15:28Z"},{"ns":0,"title":"Vanessa Trump","pageid":56850657,"size":10071,"wordcount":811,"snippet":"Vanessa
+      Kay <span class=\"searchmatch\">Trump</span> (born December 18, 1977) is an American socialite, actress and former model. She was married from 2005 to 2018 to Donald <span class=\"searchmatch\">Trump</span> Jr., the","timestamp":"2018-08-07T15:48:10Z"},{"ns":0,"title":"Family
+      of Donald Trump","pageid":52170275,"size":37336,"wordcount":3418,"snippet":"Donald <span class=\"searchmatch\">Trump</span>, the 45th President of the United States, is a prominent American family active in real estate, entertainment, business, and politics.
+      <span class=\"searchmatch\">Trump</span>''s","timestamp":"2018-08-07T07:33:23Z"},{"ns":0,"title":"Donald Trump Jr.","pageid":5679119,"size":49828,"wordcount":4173,"snippet":"Melania <span class=\"searchmatch\">Trump</span>. Through his father, <span class=\"searchmatch\">Trump</span>
+      Jr. is a grandson of Fred <span class=\"searchmatch\">Trump</span> and great-grandson of Elizabeth <span class=\"searchmatch\">Trump</span>, who founded what became the <span class=\"searchmatch\">Trump</span> Organization","timestamp":"2018-08-05T02:29:52Z"}]}}'
