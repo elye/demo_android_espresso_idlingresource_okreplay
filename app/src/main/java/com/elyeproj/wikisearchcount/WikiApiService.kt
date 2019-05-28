@@ -18,16 +18,19 @@ interface WikiApiService {
 
     companion object {
         val okReplayInterceptor = OkReplayInterceptor()
-
-        fun create(): WikiApiService {
+        val okHttpClient by lazy {
             val builder = OkHttpClient.Builder()
             builder.addInterceptor(okReplayInterceptor)
+            builder.build()
+        }
+
+        fun create(): WikiApiService {
 
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl("https://en.wikipedia.org/w/")
-                    .client(builder.build())
+                    .client(okHttpClient)
                     .build()
 
             return retrofit.create(WikiApiService::class.java)

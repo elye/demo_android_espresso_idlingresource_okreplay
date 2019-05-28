@@ -9,6 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
+import com.jakewharton.espresso.OkHttp3IdlingResource
 import okreplay.AndroidTapeRoot
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
@@ -30,7 +31,7 @@ class InstrumentedTest {
 
     private val okReplayConfig = OkReplayConfig.Builder()
             .tapeRoot(AndroidTapeRoot(InstrumentationRegistry.getContext(), javaClass))
-            .defaultMode(TapeMode.READ_WRITE) // or TapeMode.READ_ONLY
+            .defaultMode(TapeMode.WRITE_ONLY) // or TapeMode.READ_ONLY
             .sslEnabled(true)
             .interceptor(WikiApiService.okReplayInterceptor)
             .build()
@@ -50,19 +51,20 @@ class InstrumentedTest {
 
     @Before
     fun setup() {
+        val resource = OkHttp3IdlingResource.create("OkHttp", WikiApiService.okHttpClient)
+        IdlingRegistry.getInstance().register(resource)
+
         activityRule.launchActivity(null)
-        IdlingRegistry.getInstance().register(fetchingIdlingResource)
-        activityRule.activity.setFetcherListener(fetchingIdlingResource)
     }
 
     @Test
-    @OkReplay(tape = "instrumental launch and search", mode = TapeMode.READ_WRITE)
+    @OkReplay(tape = "instrumental launch and search", mode = TapeMode.WRITE_ONLY)
     fun launchAndSearch() {
         Espresso.onView(ViewMatchers.withId(R.id.edit_search))
                 .perform(ViewActions.replaceText("Trump"))
         Espresso.onView(ViewMatchers.withId(R.id.btn_search))
                 .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.txt_search_result))
-                .check(ViewAssertions.matches(ViewMatchers.withText("22908 result found")))
+                .check(ViewAssertions.matches(ViewMatchers.withText("26369 result found")))
     }
 }
